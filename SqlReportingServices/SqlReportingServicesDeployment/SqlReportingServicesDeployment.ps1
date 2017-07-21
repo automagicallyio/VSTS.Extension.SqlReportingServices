@@ -132,7 +132,7 @@ param(
 #		           Uploading datasources                 #
 ##########################################################
 
-	$rdsFiles = @(Get-ChildItem $DataSourceLocalPath);
+	$rdsFiles = @(Get-ChildItem $DataSourceLocalPath -Filter *.rds);
 	$rdsFileCount = $rdsFiles.Length;
 	if($IncludeDataSource -eq $true){ #Update the datasources
 		Write-Host "Updating $rdsFileCount datasource files to $WebserviceUrl ($ReportUploadRootPath)...";
@@ -170,7 +170,7 @@ param(
 #		            Uploading datasets                   #
 ##########################################################
 
-	$rsdFiles = @(Get-ChildItem $DataSetLocalPath);
+	$rsdFiles = @(Get-ChildItem $DataSetLocalPath -Filter *.rsd);
 	$rsdFileCount = $rsdFiles.Length;
 	if($IncludeDataSet -eq $true){
 		Write-Host "Uploading $rsdFileCount Dataset files";
@@ -268,7 +268,7 @@ param(
 #		             Uploading reports                   #
 ##########################################################
 
-	$files = @(Get-ChildItem $ReportFiles);
+	$files = @(Get-ChildItem $ReportFiles -Filter *.rdl);
 	$fileCount = $files.Length;
 	Verbose-WriteLine "Found $fileCount items in $ReportFiles";
 
